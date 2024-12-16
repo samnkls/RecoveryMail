@@ -17,17 +17,17 @@ export function EmailForm() {
     if (!email) return;
 
     setIsSubmitting(true);
-    
+
     // Track email submission event
-    gtag.event({
-      action: 'start_recovery',
-      category: 'conversion',
-      label: 'Email Form Submission'
-    });
-    
+    if (typeof window !== "undefined") {
+      window.gtag("event", "conversion", {
+        send_to: "AW-16808569026/63rbCMvkjfcZEMLR-c4-", // Tag específica do Google Ads
+      });
+    }
+
     // Store email in session storage
     sessionStorage.setItem("recoveryEmail", email);
-    
+
     // Simulate a small delay for better UX
     setTimeout(() => {
       router.push("/recovery");
@@ -39,7 +39,7 @@ export function EmailForm() {
       <div className="relative overflow-hidden">
         {/* Semi-transparent dark background with subtle gradient */}
         <div className="absolute inset-0 bg-gradient-to-r from-black/60 via-black/70 to-zinc-900/60 animate-gradient-x" />
-        
+
         {/* Glass morphism container */}
         <div className="relative bg-black/40 backdrop-blur-sm p-8 rounded-2xl shadow-xl border border-white/10">
           {/* Magical floating particles */}
@@ -51,8 +51,8 @@ export function EmailForm() {
 
           {/* Form content */}
           <div className="relative z-10">
-            <Label 
-              htmlFor="email" 
+            <Label
+              htmlFor="email"
               className="text-xl font-semibold mb-6 text-white block text-center"
             >
               Digite seu email para recuperar:
@@ -72,10 +72,12 @@ export function EmailForm() {
                            group-hover:border-green-400/50 backdrop-blur-sm"
                 />
                 {/* Magical focus effect */}
-                <div className="absolute inset-0 rounded-xl bg-gradient-to-r from-green-500/20 to-green-500/10 opacity-0 
-                              group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
+                <div
+                  className="absolute inset-0 rounded-xl bg-gradient-to-r from-green-500/20 to-green-500/10 opacity-0 
+                              group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"
+                />
               </div>
-              <Button 
+              <Button
                 type="submit"
                 disabled={isSubmitting}
                 className="w-full bg-green-500 hover:bg-green-600 text-white py-6 text-lg font-semibold
@@ -88,8 +90,10 @@ export function EmailForm() {
                   {isSubmitting ? "Processando..." : "Recuperar Agora"}
                 </span>
                 {/* Magical hover effect */}
-                <div className="absolute inset-0 bg-gradient-to-r from-green-400 to-green-600 opacity-0 
-                              group-hover:opacity-100 transition-opacity duration-300" />
+                <div
+                  className="absolute inset-0 bg-gradient-to-r from-green-400 to-green-600 opacity-0 
+                              group-hover:opacity-100 transition-opacity duration-300"
+                />
               </Button>
             </form>
           </div>

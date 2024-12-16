@@ -19,12 +19,12 @@ export default function RecoveryPage() {
     } else {
       setEmail(storedEmail);
       setLoading(false);
-      
-      // Track recovery page view
+
+      // Track recovery page view (Google Ads Pixel)
       gtag.event({
-        action: 'view_recovery_page',
-        category: 'engagement',
-        label: 'Recovery Process Started'
+        action: "view_recovery_page",
+        category: "engagement",
+        label: "Recovery Process Started",
       });
     }
   }, [router]);
@@ -57,7 +57,7 @@ export default function RecoveryPage() {
             <div className="flex items-center justify-center mb-6">
               <Shield className="h-12 w-12 text-green-500 animate-pulse" />
             </div>
-            
+
             <h1 className="text-2xl font-bold text-white text-center mb-6">
               Processo de Recuperação Iniciado
             </h1>
@@ -74,8 +74,7 @@ export default function RecoveryPage() {
 
               <RecoverySteps />
 
-              <div className="mt-8 text-center">
-              </div>
+              <div className="mt-8 text-center"></div>
             </div>
           </div>
         </div>

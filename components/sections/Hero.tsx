@@ -9,12 +9,12 @@ import * as gtag from "@/lib/gtag";
 
 export function Hero() {
   useEffect(() => {
-    // Track homepage view
-    gtag.event({
-      action: 'view_homepage',
-      category: 'engagement',
-      label: 'Homepage View'
-    });
+    if (typeof window !== "undefined") {
+      window.gtag("event", "conversion", {
+        send_to: "AW-16808569026/63rbCMvkjfcZEMLR-c4-",
+        event_label: "Homepage View",
+      });
+    }
   }, []);
 
   return (
@@ -49,23 +49,32 @@ export function Hero() {
             <h1 className="text-4xl font-bold tracking-tight text-white sm:text-6xl mb-8">
               Recupere o seu e-mail em até 10 minutos!
             </h1>
-            
+
             {/* Benefits */}
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-12">
               <Card className="p-6 bg-white/90 backdrop-blur-sm">
                 <Clock className="h-8 w-8 mx-auto mb-4 text-primary" />
                 <h3 className="text-lg font-semibold">Recupere Rápido</h3>
-                <p className="text-sm text-gray-600">Geramos um token exclusivo, autenticado diretamente pelo Google, para iniciar sua recuperação em apenas 10 minutos, com total segurança e agilidade.</p>
+                <p className="text-sm text-gray-600">
+                  Geramos um token exclusivo, autenticado diretamente pelo
+                  Google, para iniciar sua recuperação em apenas 10 minutos, com
+                  total segurança e agilidade.
+                </p>
               </Card>
               <Card className="p-6 bg-white/90 backdrop-blur-sm">
                 <Shield className="h-8 w-8 mx-auto mb-4 text-primary" />
                 <h3 className="text-lg font-semibold">Totalmente Seguro</h3>
-                <p className="text-sm text-gray-600">Seus dados estão protegidos em um processo 100% confiável.</p>
+                <p className="text-sm text-gray-600">
+                  Seus dados estão protegidos em um processo 100% confiável.
+                </p>
               </Card>
               <Card className="p-6 bg-white/90 backdrop-blur-sm">
                 <Star className="h-8 w-8 mx-auto mb-4 text-primary" />
                 <h3 className="text-lg font-semibold">Suporte Exclusivo</h3>
-                <p className="text-sm text-gray-600">Equipe dedicada para acompanhar sua recuperação de ponta a ponta.</p>
+                <p className="text-sm text-gray-600">
+                  Equipe dedicada para acompanhar sua recuperação de ponta a
+                  ponta.
+                </p>
               </Card>
             </div>
 

@@ -15,7 +15,7 @@ export function RecoverySteps() {
     step1: false,
     step2: false,
     step3: false,
-    complete: false
+    complete: false,
   });
   const [token] = useState(generateToken(7));
   const [tempPassword] = useState(generateTempPassword());
@@ -29,25 +29,25 @@ export function RecoverySteps() {
 
     // Show first step
     const timer1 = setTimeout(() => {
-      setVisibleSteps(prev => ({ ...prev, step1: true }));
+      setVisibleSteps((prev) => ({ ...prev, step1: true }));
       setProgress(33);
     }, delay1);
 
     // Show second step
     const timer2 = setTimeout(() => {
-      setVisibleSteps(prev => ({ ...prev, step2: true }));
+      setVisibleSteps((prev) => ({ ...prev, step2: true }));
       setProgress(66);
     }, delay2);
 
     // Show third step
     const timer3 = setTimeout(() => {
-      setVisibleSteps(prev => ({ ...prev, step3: true }));
+      setVisibleSteps((prev) => ({ ...prev, step3: true }));
       setProgress(100);
     }, delay3);
 
     // Show complete button
     const timerComplete = setTimeout(() => {
-      setVisibleSteps(prev => ({ ...prev, complete: true }));
+      setVisibleSteps((prev) => ({ ...prev, complete: true }));
     }, delayComplete);
 
     return () => {
@@ -59,34 +59,34 @@ export function RecoverySteps() {
   }, []);
 
   const handleComplete = () => {
-    // Track completion click event
+    // Track recovery completion event
     gtag.event({
-      action: 'complete_recovery',
-      category: 'conversion',
-      label: 'Recovery Completion',
-      value: 1
+      action: "complete_recovery",
+      category: "conversion",
+      label: "Recovery Completion",
     });
-    
-    window.location.href = "https://pay.kirvano.com/236beb59-65ec-4de9-9634-2f96a0cf05e2";
+
+    window.location.href =
+      "https://pay.kirvano.com/236beb59-65ec-4de9-9634-2f96a0cf05e2";
   };
 
   return (
     <div className="space-y-6">
       <ProgressBar progress={progress} />
       <div className="space-y-4">
-        <RecoveryStep 
+        <RecoveryStep
           number={1}
           text="Verificação de segurança em andamento..."
           visible={visibleSteps.step1}
         />
-        <RecoveryStep 
+        <RecoveryStep
           number={2}
           text="Gerando token de recuperação..."
           visible={visibleSteps.step2}
           token={token}
           tempPassword={tempPassword}
         />
-        <RecoveryStep 
+        <RecoveryStep
           number={3}
           text="Preparando instruções de recuperação..."
           visible={visibleSteps.step3}
@@ -111,8 +111,10 @@ export function RecoverySteps() {
                 <CheckCircle2 className="w-5 h-5" />
                 Concluir Recuperação
               </span>
-              <div className="absolute inset-0 bg-gradient-to-r from-green-400 to-green-600 opacity-0 
-                            group-hover:opacity-100 transition-opacity duration-300" />
+              <div
+                className="absolute inset-0 bg-gradient-to-r from-green-400 to-green-600 opacity-0 
+                            group-hover:opacity-100 transition-opacity duration-300"
+              />
             </Button>
           </motion.div>
         )}
