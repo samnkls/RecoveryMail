@@ -43,7 +43,7 @@ export default function RecoveryPage() {
         {/* Logo */}
         <div className="mb-12 flex justify-center">
           <Image
-            src="https://reoverymail.site/wp-content/uploads/2024/11/Please-1.png"
+            src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/7e/Gmail_icon_%282020%29.svg/1280px-Gmail_icon_%282020%29.svg.png"
             alt="Logo"
             width={200}
             height={80}
