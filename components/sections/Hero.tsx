@@ -22,7 +22,7 @@ export function Hero() {
       {/* Background Image with Overlay */}
       <div className="absolute inset-0 z-0">
         <Image
-          src="https://reoverymail.site/wp-content/uploads/2024/11/Design-sem-nome-2023-10-29T215313.636-1.png"
+          src="https://tm.ibxk.com.br/2023/06/06/06093258699033.jpg"
           alt="Background"
           fill
           className="object-cover"
