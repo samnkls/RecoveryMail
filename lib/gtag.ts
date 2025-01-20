@@ -1,5 +1,5 @@
 // Google Ads Pixel Measurement ID
-export const GOOGLE_ADS_ID = "AW-11549189858";
+export const GOOGLE_ADS_ID = "AW-16824697526";
 
 // Carregar a tag do Google Ads Pixel
 export const loadGoogleAds = () => {
