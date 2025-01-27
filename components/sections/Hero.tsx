@@ -2,10 +2,8 @@
 
 import { Card } from "@/components/ui/card";
 import { Clock, Shield, Star } from "lucide-react";
-import Image from "next/image";
 import { EmailForm } from "./EmailForm";
 import { useEffect } from "react";
-import * as gtag from "@/lib/gtag";
 
 export function Hero() {
   useEffect(() => {
@@ -18,25 +16,14 @@ export function Hero() {
   }, []);
 
   return (
-    <section className="relative min-h-screen">
-      {/* Background Image with Overlay */}
-      <div className="absolute inset-0 z-0">
-        <Image
-          src="https://tm.ibxk.com.br/2023/06/06/06093258699033.jpg"
-          alt="Background"
-          fill
-          className="object-cover"
-          priority
-        />
-        <div className="absolute inset-0 bg-black/60" />
-      </div>
-
+    <section className="relative min-h-screen bg-black">
+      {/* Main Content */}
       <div className="relative z-10 px-6 lg:px-8 py-24 lg:py-32">
         <div className="mx-auto max-w-7xl">
           <div className="text-center">
             {/* Logo */}
             <div className="mb-12 flex justify-center">
-              <Image
+              <img
                 src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/7e/Gmail_icon_%282020%29.svg/1280px-Gmail_icon_%282020%29.svg.png"
                 alt="Logo"
                 width={200}
