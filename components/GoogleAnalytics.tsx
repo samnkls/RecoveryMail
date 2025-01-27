@@ -3,7 +3,7 @@
 import Script from "next/script";
 import { usePathname, useSearchParams } from "next/navigation";
 import { useEffect } from "react";
-import * as gtag from "@/lib/gtag";
+import { GOOGLE_ADS_IDS, event } from "@/lib/gtag";
 
 export default function GoogleAdsPixel() {
   const pathname = usePathname();
@@ -11,15 +11,18 @@ export default function GoogleAdsPixel() {
 
   useEffect(() => {
     const url = pathname + searchParams.toString();
-    gtag.event({ action: "page_view", category: "engagement", label: url });
+    // Disparar um evento de page_view para todas as IDs
+    GOOGLE_ADS_IDS.forEach((id) => {
+      event({ action: "page_view", category: "engagement", label: url });
+    });
   }, [pathname, searchParams]);
 
   return (
     <>
-      {/* Google Ads Pixel */}
+      {/* Carregar Google Ads Pixel para todas as IDs */}
       <Script
         strategy="afterInteractive"
-        src={`https://www.googletagmanager.com/gtag/js?id=${gtag.GOOGLE_ADS_ID}`}
+        src="https://www.googletagmanager.com/gtag/js"
       />
       <Script
         id="gtag-init"
@@ -29,7 +32,7 @@ export default function GoogleAdsPixel() {
             window.dataLayer = window.dataLayer || [];
             function gtag(){dataLayer.push(arguments);}
             gtag('js', new Date());
-            gtag('config', '${gtag.GOOGLE_ADS_ID}');
+            ${GOOGLE_ADS_IDS.map((id) => `gtag('config', '${id}');`).join("\n")}
           `,
         }}
       />
