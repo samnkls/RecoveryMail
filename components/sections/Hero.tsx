@@ -24,8 +24,8 @@ export function Hero() {
             {/* Logo */}
             <div className="mb-12 flex justify-center">
               <img
-                src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/7e/Gmail_icon_%282020%29.svg/1280px-Gmail_icon_%282020%29.svg.png"
-                alt="Logo"
+                src="https://upload.wikimedia.org/wikipedia/commons/7/7e/Gmail_icon_%282020%29.svg"
+                alt="Gmail Logo"
                 width={200}
                 height={80}
                 className="h-20 w-auto"
